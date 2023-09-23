@@ -1,0 +1,15 @@
+
+.eslintrc.cjs
+.gitignore
+.prettierrc.json
+.vscode
+.npmignore
+env.d.ts
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+ts.build.info
+assets
+src
+node_modules

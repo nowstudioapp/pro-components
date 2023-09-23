@@ -1,0 +1,7 @@
+:root {
+  --vp-c-indigo-1: rgba(64, 158, 255, 1);
+  --vp-c-indigo-2: rgba(64, 158, 255, 0.9);
+  --vp-c-indigo-3: rgba(64, 158, 255, 0.8);
+
+  --component-preview-bg: #eee !important;
+}

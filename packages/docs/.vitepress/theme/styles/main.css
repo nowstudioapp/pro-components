@@ -1,0 +1,51 @@
+@import url(./base.css);
+@import url(./default.css);
+@import url(../../../../components/src/assets/css/main.css);
+
+/**
+ * Table
+ * -------------------------------------------------------------------------- */
+
+ .vp-doc .el-table table {
+  table-layout: fixed;
+  border-collapse: separate;
+  display: table;
+  margin: 0;
+}
+
+.vp-doc .el-table tr {
+  border-top: none;
+  transition: none;
+}
+
+.vp-doc .el-table tr:nth-child(2n) {
+  background-color: var(--el-table-tr-bg-color);
+}
+
+.vp-doc .el-table th {
+  text-align: left;
+  font-size: inherit;
+  font-weight: 600;
+  color:inherit;
+  background-color: var(--el-table-header-bg-color);
+}
+
+.vp-doc .el-table td {
+  font-size: 14px;
+}
+
+.vp-doc .el-table th,
+.vp-doc .el-table td {
+  border-top: none;
+  border-left: none;
+}
+
+
+/**
+ * Other
+ * -------------------------------------------------------------------------- */
+
+.vp-doc .el-pager {
+  margin: 0;
+  padding: 0;
+}

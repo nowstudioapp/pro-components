@@ -1,0 +1,10 @@
+@import url(./var.css);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pro-el-table-columns-keys.el-checkbox {
+  display: flex;
+  padding-left: 16px;
+}
+
