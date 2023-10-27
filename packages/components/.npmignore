@@ -4,6 +4,7 @@
 .prettierrc.json
 .vscode
 .npmignore
+.npmrc
 env.d.ts
 tsconfig.app.json
 tsconfig.json
