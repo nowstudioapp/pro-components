@@ -51,7 +51,7 @@
 
   1.  修改packages/components目录下的`package.json`文件，将 `name` 属性值替换为你的组件库名称
   2.  修改constants目录下的 `index.ts` 文件，将 `NAME` 变量值修改为你的组件库名称 (_页面显示_)
-  3.  找到packages/docs目录下的 `tsconfig.json` 文件，查看 `paths` 中 key 为 `aiva-components` 的属性，将**属性名**修改为你的组件库名称
+  3.  找到packages/docs目录下的 `tsconfig.json` 文件，然后找到 `paths` 中 key 为 `aiva-components` 的属性，将**属性名**修改为你的组件库名称
 
 - 在 packages/components 目录下运行 `pnpm link --dir ../docs`
 
