@@ -25,7 +25,7 @@
 | 类型          | 说明             |
 | ------------- | ---------------- |
 | input         | 输入框           |
-| inputNnumber  | 数字输入框       |
+| inputNumber  | 数字输入框       |
 | password      | 密码框           |
 | select        | 下拉选择框       |
 | radioGroup    | 单选框           |

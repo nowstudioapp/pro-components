@@ -53,7 +53,10 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
         props.columns?.filter((i) =>
           typeof i.hideInForm === 'function' ? !i.hideInForm(originFormData.value) : !i.hideInForm
         ) || []
-      arr.sort((a, b) => ((a.order || 0) > (b.order || 0) ? 1 : -1))
+      arr.sort(({ order: orderA = 0 }, { order: orderB = 0 }) => {
+        if (orderA === orderB) return 0
+        return orderA > orderB ? 1 : -1
+      })
 
       return arr
     })

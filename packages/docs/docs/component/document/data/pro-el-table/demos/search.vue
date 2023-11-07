@@ -35,7 +35,7 @@ const tableColumns: ProElTableColumn<TData>[] = [
   {
     prop: "age",
     label: "年龄",
-    valueType: "inputNnumber",
+    valueType: "inputNumber",
     fieldProps: {
       controlsPosition: "right",
       placeholder: "年龄",

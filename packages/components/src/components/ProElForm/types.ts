@@ -36,7 +36,7 @@ export type FieldProps = Partial<
 /** @name 渲染类型 */
 export type ValueType =
   | 'input'
-  | 'inputNnumber'
+  | 'inputNumber'
   | 'password'
   | 'select'
   | 'radioGroup'

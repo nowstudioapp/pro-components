@@ -76,7 +76,7 @@ export const ProField = defineComponent<
           return <ElDatePicker type="datetime" />
         case 'dateTimeRange':
           return <ElDatePicker type="datetimerange" />
-        case 'inputNnumber':
+        case 'inputNumber':
           return <ElInputNumber />
         case 'password':
           return <ElInput type="password" />

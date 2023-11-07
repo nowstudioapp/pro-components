@@ -40,7 +40,7 @@ const tableColumns: ProElTableColumn<TData>[] = [
     prop: "age",
     label: "年龄",
     tableColumn: {
-      sortable: "custom",
+      sortable: true,
     },
     hideInSearch: true,
   },
