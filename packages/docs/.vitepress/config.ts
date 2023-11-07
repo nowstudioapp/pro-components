@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress"
 import vueJsx from "@vitejs/plugin-vue-jsx"
 import { containerPreview, componentPreview } from "@vitepress-demo-preview/plugin"
 import { resolve } from "path"
-import autoprefixer = require("autoprefixer")
+import autoprefixer from "autoprefixer"
 import tailwind from "tailwindcss"
 import { DIR_NAME, NAME } from "../../../constants"
 // https://vitepress.dev/reference/site-config
