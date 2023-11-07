@@ -37,9 +37,9 @@ const columns: ProElFormColumn<TParams>[] = [
   {
     prop: "inputNumber",
     label: "数字",
-    valueType: "inputNnumber",
+    valueType: "inputNumber",
     fieldProps: {
-      placeholder: "文本框",
+      placeholder: "数字",
     },
   },
   {

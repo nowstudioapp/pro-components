@@ -109,7 +109,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
               state.loading = false
             })
           if (res.success) {
-            state.tableData = res.dataList as any
+            state.tableData.splice(0, state.tableData.length, ...(res.dataList as any))
             pageConfig.total = res.total
           }
           return Promise.resolve(true)
