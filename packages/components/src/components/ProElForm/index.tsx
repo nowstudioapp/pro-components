@@ -25,7 +25,8 @@ const compProps: (keyof ProElFormProps<Record<string, any>>)[] = [
   'onFinish',
   'onReset',
   'onReady',
-  'submitter'
+  'submitter',
+  'formProps'
 ]
 const compEmits: string[] = []
 
@@ -161,8 +162,8 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
       const arr = formLayoutType.value === 'SearchForm' ? searchColumns.value : columns.value
 
       return (
-        <ElForm ref={formRef} model={formData}>
-          <ElRow {...props.rowProps}>
+        <ElForm ref={formRef} model={formData} {...props.formProps}>
+          <ElRow gutter={16} {...props.rowProps}>
             {arr.map((item) => {
               let formItemProps = item.formItemProps || {}
               if (typeof item.formItemProps === 'function') {

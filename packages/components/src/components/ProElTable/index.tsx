@@ -32,6 +32,7 @@ const propsArr: (keyof ProElTableProps<any>)[] = [
   'columns',
   'request',
   'tableProps',
+  'formProps',
   'manualRequest',
   'columnEmptyText',
   'search',
@@ -140,7 +141,8 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
         onFinish() {
           return requestResult()
         },
-        ...(props.search === false ? undefined : props.search)
+        ...(props.search === false ? undefined : props.search),
+        ...props.formProps
       }
     })
 

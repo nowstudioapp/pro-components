@@ -5,6 +5,7 @@
     "../components/src/**/*"
   ],
   "compilerOptions": {
+    "esModuleInterop": true,
     "paths": {
       "@aiwen/ui": [
         "../components/src"
