@@ -5,11 +5,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { ElButton } from "element-plus"
-import {
-  type RequestProp,
-  ProElTable,
-  type ProElTableColumn,
-} from "@aiwen/ui"
+import { type RequestProp, ProElTable, type ProElTableColumn } from "@aiwen/ui"
 type TData = {
   name: string
   age: number
