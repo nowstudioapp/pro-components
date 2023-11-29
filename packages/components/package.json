@@ -1,6 +1,6 @@
 {
   "name": "@aiwen/ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.min.umd.cjs",
   "module": "dist/index.min.js",
   "types": "types/index.d.ts",
