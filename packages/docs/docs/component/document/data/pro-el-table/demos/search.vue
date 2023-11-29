@@ -26,7 +26,7 @@ const tableColumns: ProElTableColumn<TData>[] = [
     prop: "name",
     label: "姓名",
     colProps: {
-      span:12
+      span: 12,
     },
     fieldProps: {
       placeholder: "请输入姓名",
@@ -41,7 +41,7 @@ const tableColumns: ProElTableColumn<TData>[] = [
       placeholder: "年龄",
     },
     colProps: {
-      span:12
+      span: 12,
     },
   },
   {
@@ -49,7 +49,7 @@ const tableColumns: ProElTableColumn<TData>[] = [
     label: "性别",
     valueType: "select",
     colProps: {
-      span:12
+      span: 12,
     },
     fieldProps: {
       clearable: true,
@@ -87,7 +87,11 @@ const requestTableData: RequestProp<TData> = () => {
 </script>
 <template>
   <div>
-    <ProElTable :columns="tableColumns" :request="requestTableData">
+    <ProElTable
+      :form-props="{ rowProps: { gutter: 16 } }"
+      :columns="tableColumns"
+      :request="requestTableData"
+    >
       <template #tableTitle>
         <ElButton type="primary">新建</ElButton>
       </template>

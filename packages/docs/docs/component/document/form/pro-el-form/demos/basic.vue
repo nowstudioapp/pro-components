@@ -140,7 +140,7 @@ const submitHandler = (v: any) => {
 <template>
   <div>
     <div>
-      <ProElForm :columns="columns" @finish="submitHandler" />
+      <ProElForm :form-props="{labelWidth:200}" :columns="columns" @finish="submitHandler" />
     </div>
   </div>
 </template>

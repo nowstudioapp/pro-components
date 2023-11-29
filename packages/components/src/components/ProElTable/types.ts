@@ -59,6 +59,8 @@ export interface ProElTableProps<T extends Record<string, any>> {
   request?: RequestProp<T>
   /** @name 传递给ElTable的Props */
   tableProps?: Omit<TableProps<T>, 'data'>
+  /** @name 传递给ProElForm的Props */
+  formProps?: ProElFormProps<Record<keyof T, any>>
   /** @name 传递给表格的事件对象 */
   tableEvents?: Partial<ElTableEvents>
   /** @name 是否手动触发首次请求 */
