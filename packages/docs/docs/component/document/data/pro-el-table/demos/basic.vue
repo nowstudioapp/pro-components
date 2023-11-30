@@ -13,7 +13,7 @@ type TData = {
   address: string
 }
 
-const tableData: TData[] = new Array(8).fill(1).map((_, i) => ({
+const tableData: TData[] = new Array(100).fill(1).map((_, i) => ({
   name: "名称" + i,
   age: i + 26,
   gender: i % 2 ? "男" : "女",
