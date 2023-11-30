@@ -73,11 +73,11 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
 
     /** 分页配置 */
     const pageConfig = reactive<Partial<WritePaginationProps>>({
-      total: 0,
       pageSize: 10,
-      currentPage: 1,
       layout: 'total, sizes, prev, pager, next, jumper',
-      ...(props.pagination === false ? undefined : props.pagination)
+      ...(props.pagination === false ? undefined : props.pagination),
+      currentPage: 1,
+      total: 0
     })
 
     /** 搜索表单列 */
@@ -94,6 +94,9 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
     /** 重置事件 */
     const resetFormHandler = () => {
       formRef.value?.resetFields()
+      pageConfig.pageSize = 10
+      pageConfig.currentPage = 1
+      pageConfig.total = 0
       requestResult()
     }
 
