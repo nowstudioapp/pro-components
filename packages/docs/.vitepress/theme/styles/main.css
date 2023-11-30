@@ -49,3 +49,7 @@
   margin: 0;
   padding: 0;
 }
+
+.vp-doc .el-pager li {
+  margin-top: 0;
+}
