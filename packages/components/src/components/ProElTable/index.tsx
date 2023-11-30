@@ -18,7 +18,7 @@ import {
   ElTable,
   ElTableColumn,
   ElTooltip,
-  ElLoadingDirective,
+  ElLoading,
   ElEmpty,
   ElPagination,
   type TableInstance,
@@ -365,7 +365,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
                   </ElTableColumn>
                 ))}
               </ElTable>,
-              [[ElLoadingDirective, state.loading]]
+              [[ElLoading.directive, state.loading]]
             )}
           </div>
           {props.pagination === false ? null : (

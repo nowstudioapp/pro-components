@@ -4,6 +4,7 @@ import { containerPreview, componentPreview } from "@vitepress-demo-preview/plug
 import { resolve } from "path"
 import autoprefixer from "autoprefixer"
 import tailwind from "tailwindcss"
+import ElementPlus from 'unplugin-element-plus/vite'
 import { DIR_NAME, NAME } from "../../../constants"
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -98,7 +99,7 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [vueJsx()],
+    plugins: [vueJsx(),ElementPlus({})],
     resolve: {
       alias: [
         {
