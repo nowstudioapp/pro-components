@@ -5,9 +5,10 @@ import { resolve } from 'path'
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
 import { NAME } from '../../constants'
+import ElementPlus from 'unplugin-element-plus/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [vue(), vueJsx(), ElementPlus({})],
   css: {
     postcss: {
       plugins: [
