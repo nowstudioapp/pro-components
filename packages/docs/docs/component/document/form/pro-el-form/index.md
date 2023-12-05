@@ -41,7 +41,6 @@ ProElForm 在 ElForm 的基础上进行了一些拓展，可根据配置快速�
 | modalProps  | 传递给 ElDialog 的属性  | `Partial<DialogProps>`                                 | -      |
 | rowProps    | 传递给ElRow的Props      | `Partial<RowProps>`                                    | -      |
 | submitter   | 提交相关配置            | `Submitter`                                            | -      |
-| onReset     | 点击重置按钮触发        | `(values: T) => Promise<void>`                         | -      |
 | onFinish    | 提交表单 通过校验后触发 | `(values: T) => Promise<boolean>`                      | -      |
 | onReady     | 组件挂载之后触发        | `(formRef: ProElFormRef) => void`                      | -      |
 
@@ -75,13 +74,12 @@ ProElForm 在 ElForm 的基础上进行了一些拓展，可根据配置快速�
 
 ### Submitter
 
-| 属性             | 描述             | 类型                     |
-| ---------------- | ---------------- | ------------------------ |
-| onSubmit         | 提交方法         | `() => void`             |
-| onReset          | 重置方法         | `() => void`             |
-| ~~searchConfig~~ | 提交配置 (已弃用，请使用 `submitConfig`) | `SubmitConfig`           |
-| submitConfig     | 搜索配置         | `SubmitConfig`           |
-| render           | 自定义渲染方法   | `(() => VNode) \| VNode` |
+| 属性         | 描述           | 类型                     |
+| ------------ | -------------- | ------------------------ |
+| onSubmit     | 提交方法       | `() => void`             |
+| onReset      | 重置方法       | `() => void`             |
+| searchConfig | 提交配置       | `SubmitConfig`           |
+| render       | 自定义渲染方法 | `(() => VNode) \| VNode` |
 
 ### SearchConfig
 

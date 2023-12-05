@@ -1,4 +1,4 @@
-import { ref, reactive, computed, defineComponent, toRaw, useSlots, h, onMounted } from 'vue'
+import { ref, reactive, computed, defineComponent, useSlots, h, onMounted } from 'vue'
 import type { ProElFormRef, LayoutType, ProElFormProps } from './types'
 import {
   ElRow,
@@ -23,7 +23,6 @@ const compProps: (keyof ProElFormProps<Record<string, any>>)[] = [
   'modalProps',
   'rowProps',
   'onFinish',
-  'onReset',
   'onReady',
   'submitter',
   'formProps'
@@ -31,35 +30,24 @@ const compProps: (keyof ProElFormProps<Record<string, any>>)[] = [
 
 export const ProElForm = defineComponent<ProElFormProps<any>>(
   <T extends Record<string, any>>(props: ProElFormProps<T>) => {
-    const submitter = computed(() => {
-      const { submitter } = props
-      return {
-        ...submitter,
-        submitConfig: { ...submitter?.searchConfig, ...submitter?.submitConfig }
-      }
-    })
-
     /** 24分栏 */
     const allSpanAtRowCount = 24
     const defaultFormData = reactive<T>({} as T)
     const formData = reactive<T>(defaultFormData)
     const loading = ref(false)
     const formRef = ref<null | FormInstance>(null)
-    const expand = ref(submitter.value.submitConfig?.defaultCollapsed || false)
+    const expand = ref(props.submitter?.searchConfig?.defaultCollapsed || false)
 
     const slots = useSlots()
 
     /** 表单布局类型 */
     const formLayoutType = computed<LayoutType>(() => props.layoutType || 'Form')
 
-    /** 表单值 */
-    const originFormData = computed<T>(() => toRaw(formData))
-
     /** 表单列 */
     const columns = computed(() => {
       const arr =
         props.columns?.filter((i) =>
-          typeof i.hideInForm === 'function' ? !i.hideInForm(originFormData.value) : !i.hideInForm
+          typeof i.hideInForm === 'function' ? !i.hideInForm(formData) : !i.hideInForm
         ) || []
       arr.sort(({ order: orderA = 0 }, { order: orderB = 0 }) => {
         if (orderA === orderB) return 0
@@ -107,31 +95,18 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
       if (result === true) {
         loading.value = true
         if (props.onFinish) {
-          const res = await props.onFinish(originFormData.value)
+          const res = await props.onFinish(formData)
           if (res) {
             loading.value = false
           }
         }
       }
     }
-    /** 重置表单事件 */
-    const resetHandler = () => {
-      if (props.onReset) {
-        props.onReset(originFormData.value)
-        return
-      }
-      initializeFormData()
-    }
 
     /** 表单按钮VNode对象 */
     const formBtnsNode = computed(() => {
-      const { onSubmit, onReset, submitConfig, render } = submitter.value || {}
-      const {
-        submitText = '提交',
-        resetText = '重置',
-        submitProps,
-        resetProps
-      } = submitConfig || {}
+      const { onSubmit, onReset, searchConfig = {}, render } = props.submitter || {}
+      const { submitText = '提交', resetText = '重置', submitProps, resetProps } = searchConfig
 
       const submitBtnProps: TFooterBtnsProps['confirmProps'] = loading.value
         ? ({ ...submitProps, disabled: true, loading: true } as TFooterBtnsProps['confirmProps'])
@@ -148,7 +123,7 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
           confirmText={submitText}
           confirmProps={submitBtnProps}
           cancelProps={resetProps}
-          onCancel={onReset || resetHandler}
+          onCancel={onReset || initializeFormData}
           onConfirm={onSubmit || submitHandler}
         />
       )
@@ -174,11 +149,11 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
             {arr.map((item) => {
               let formItemProps = item.formItemProps || {}
               if (typeof item.formItemProps === 'function') {
-                formItemProps = item.formItemProps(originFormData.value)
+                formItemProps = item.formItemProps(formData)
               }
               let formFieldProps = item.fieldProps || {}
               if (typeof item.fieldProps === 'function') {
-                formFieldProps = item.fieldProps(originFormData.value)
+                formFieldProps = item.fieldProps(formData)
               }
               return (
                 <ElCol {...item.colProps} key={item.key || item.prop}>
@@ -206,20 +181,20 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
                       error: () =>
                         slots[(item.prop as string) + 'Error']
                           ? slots[(item.prop as string) + 'Error']!({
-                              record: originFormData.value[item.prop],
-                              formData: originFormData.value,
+                              record: formData[item.prop],
+                              formData: formData,
                               column: item
                             })
                           : null,
                       default: () =>
                         slots[item.prop as string] ? (
                           slots[item.prop as string]!({
-                            record: originFormData.value[item.prop],
-                            formData: originFormData.value,
+                            record: formData[item.prop],
+                            formData: formData,
                             column: item
                           })
                         ) : item.renderField ? (
-                          h(item.renderField(originFormData.value, item), {
+                          h(item.renderField(formData, item), {
                             modelValue: formData[item.prop],
                             'onUpdate:modelValue': (v: any) => {
                               formData[item.prop] = v
@@ -254,7 +229,8 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
 
     /** 表单布局 */
     const formLayoutNode = computed(() => {
-      const { collapsedText = '收起', collapseText = '展开' } = submitter.value.submitConfig || {}
+      const { collapsedText = '收起', collapseText = '展开' } = props.submitter?.searchConfig || {}
+
       switch (formLayoutType.value) {
         case 'Form':
           return <div>{formNode.value}</div>
@@ -281,6 +257,7 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
               </div>
             </div>
           )
+
         case 'DialogForm':
           return (
             <ElDialog {...props.modalProps}>
@@ -318,12 +295,12 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
 
     /** 获取所有表单数据 */
     const getFieldsValue: ProElFormRef['getFieldsValue'] = () => {
-      return originFormData.value as any
+      return formData as any
     }
 
     /** 获取prop获取表单数据 */
     const getFieldValue: ProElFormRef['getFieldValue'] = (prop) => {
-      return originFormData.value[prop]
+      return formData[prop]
     }
 
     const initializeCall = () => {
