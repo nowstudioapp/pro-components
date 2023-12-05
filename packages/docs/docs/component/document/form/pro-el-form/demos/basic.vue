@@ -57,7 +57,13 @@ const columns: ProElFormColumn<TParams>[] = [
     fieldProps: {
       placeholder: "请选择",
     },
-    options: defaultOptions,
+    // options: defaultOptions,
+    async requestOptions() {
+      await new Promise<void>((r) => {
+        setTimeout(() => {r()},3000)
+      })
+      return defaultOptions
+    }
   },
   {
     prop: "radioGroup",
