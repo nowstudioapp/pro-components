@@ -60,15 +60,16 @@ export interface ProElTableProps<T extends Record<string, any>> {
   /** @name 传递给ElTable的Props */
   tableProps?: Omit<TableProps<T>, 'data'>
   /** @name 传递给ProElForm的Props */
-  formProps?: ProElFormProps<Record<keyof T, any>>
+  formProps?: Pick<
+    ProElFormProps<Record<keyof T, any>>,
+    'rowProps' | 'submitter' | 'onFinish' | 'onReady'
+  >
   /** @name 传递给表格的事件对象 */
   tableEvents?: Partial<ElTableEvents>
   /** @name 是否手动触发首次请求 */
   manualRequest?: true
   /** @description 空值时显示内容 */
   columnEmptyText?: string
-  /** @name 搜索表单配置 */
-  search?: false | Omit<ProElFormProps<T>, 'columns' | 'modalProps' | 'drawerProps'>
   /** @name 分页配置 */
   pagination?: false | Partial<WritePaginationProps>
   /** @name 隐藏表格工具栏 */
@@ -77,6 +78,10 @@ export interface ProElTableProps<T extends Record<string, any>> {
   onReady?: (tableRef: ProElTableRef, formRef: ProElFormRef) => void
   /** @name 表格Loading */
   loading?: boolean
+  /** 隐藏搜索表单 */
+  hideSearchBar?: true
+  /** 多选 */
+  isSelection?: true
 }
 
 /**

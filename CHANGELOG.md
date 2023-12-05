@@ -6,6 +6,11 @@
 2023-12-05
 
 - `ProElTable` 样式优化
+- 修改 `ProElTable` 的 `formProps` 属性类型
+- 移除 `ProElTable` 的 `search` 属性
+- 新增 `ProElTable` 的 `hideSearchBar` 属性
+- 新增 `ProElTable` 的 `isSelection` 属性
+- 移除 `ProElForm` 的 `onReset` 属性
 - 修复 `ProElForm` 的 `requestOption` 不生效问题
 
 ---

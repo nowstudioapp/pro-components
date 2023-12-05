@@ -117,8 +117,6 @@ export interface ProElFormProps<T extends Record<string, any>> {
   rowProps?: Partial<RowProps>
   /** @name 提交相关配置 */
   submitter?: Submitter
-  /** @description 点击重置按钮触发 */
-  onReset?: (values: T) => Promise<void>
   /** @description 提交表单 通过校验后触发 */
   onFinish?: (values: T) => Promise<boolean>
   /** @description 组件挂载之后触发 */
@@ -127,7 +125,7 @@ export interface ProElFormProps<T extends Record<string, any>> {
 
 export type LayoutType = 'Form' | 'DrawerForm' | 'DialogForm' | 'SearchForm'
 
-export interface SubmitConfig {
+export interface SearchConfig {
   /** @name 重置按钮文本 */
   resetText?: string
   /** @name 提交按钮文本 */
@@ -149,12 +147,8 @@ export interface Submitter {
   onSubmit?: () => void
   /** @name 重置方法 */
   onReset?: () => void
-  /**
-   * @deprecated 搜索配置 已弃用 请使用 `submitConfig`
-   */
-  searchConfig?: SubmitConfig
-  /** @name 提交按钮配置 */
-  submitConfig?: SubmitConfig
+  /**  @name 搜索配置 */
+  searchConfig?: SearchConfig
   /** @name 自定义渲染方法 */
   render?: (() => VNode) | VNode
 }

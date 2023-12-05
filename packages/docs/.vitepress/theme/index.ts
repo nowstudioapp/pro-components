@@ -3,6 +3,7 @@ import DefaultTheme from "vitepress/theme"
 import { ElementPlusContainer } from "@vitepress-demo-preview/component"
 import type { EnhanceAppContext, Awaitable } from "vitepress"
 import "@vitepress-demo-preview/component/dist/style.css"
+import 'element-plus/dist/index.css'
 import "./styles/main.css"
 
 export default {

@@ -20,21 +20,22 @@
 
 ## Props
 
-| 属性            | 描述                   | 类型                                                                                                                            | 默认值  |
-| --------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| tableData       | 表格数据               | `T[]`                                                                                                                           | `[]`    |
-| columns         | 表格列配置             | `ProElTableColumn<T>[]`                                                                                                         | `[]`    |
-| request         | 表格数据请求方法       | `RequestProp<T>`                                                                                                                | -       |
-| tableProps      | 传递给ElTable的Props   | `Omit<TableProps<T>, 'data'>`                                                                                                   | -       |
-| proElFormProps  | 传递给ProElForm的Props | `ProElFormProps<Record<keyof T,any>>`                                                                                           | -       |
-| tableEvents     | 传递给表格的事件对象   | `Partial<ElTableEvents>`                                                                                                        | false   |
-| manualRequest   | 是否手动触发首次请求   | `true`                                                                                                                          | -       |
-| columnEmptyText | 空值时显示内容         | `string`                                                                                                                        | `-`     |
-| search          | 搜索表单配置           | `false \| Omit<ProElFormProps<T>, 'columns'                                                  \| 'modalProps' \| 'drawerProps'>` | -       |
-| pagination      | 分页配置               | `false                                                     \| Partial<WritePaginationProps>`                                    | -       |
-| hideTools       | 隐藏表格工具栏         | `true`                                                                                                                          | `false` |
-| onReady         | 组件挂载之后触发       | `(tableRef: ProElTableRef, formRef: ProElFormRef) => void`                                                                      | -       |
-| loading         | 表格Loading            | `boolean`                                                                                                                       | -       |
+| 属性            | 描述                   | 类型                                                                                               | 默认值 |
+| --------------- | ---------------------- | -------------------------------------------------------------------------------------------------- | ------ |
+| tableData       | 表格数据               | `T[]`                                                                                              | `[]`   |
+| columns         | 表格列配置             | `ProElTableColumn<T>[]`                                                                            | `[]`   |
+| request         | 表格数据请求方法       | `RequestProp<T>`                                                                                   | -      |
+| tableProps      | 传递给ElTable的Props   | `Omit<TableProps<T>, 'data'>`                                                                      | -      |
+| formProps       | 传递给ProElForm的Props | `Pick<ProElFormProps<Record<keyof T, any>>,'rowProps' \| 'submitter' \| 'onFinish' \| 'onReady' >` | -      |
+| tableEvents     | 传递给表格的事件对象   | `Partial<ElTableEvents>`                                                                           | -      |
+| manualRequest   | 是否手动触发首次请求   | `true`                                                                                             | -      |
+| columnEmptyText | 空值时显示内容         | `string`                                                                                           | -      |
+| pagination      | 分页配置               | `false                                                     \| Partial<WritePaginationProps>`       | -      |
+| hideTools       | 隐藏表格工具栏         | `true`                                                                                             | -      |
+| hideSearchBar   | 隐藏表格搜索栏         | `true`                                                                                             | -      |
+| onReady         | 组件挂载之后触发       | `(tableRef: ProElTableRef, formRef: ProElFormRef) => void`                                         | -      |
+| loading         | 表格Loading            | `boolean`                                                                                          | -      |
+| isSelection     | 开启多选               | `true`                                                                                             | -      |
 
 ## ProElTableColumn\<T\>[]
 

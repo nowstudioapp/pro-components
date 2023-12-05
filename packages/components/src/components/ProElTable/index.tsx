@@ -33,11 +33,12 @@ const propsArr: (keyof ProElTableProps<any>)[] = [
   'request',
   'tableProps',
   'formProps',
+  'isSelection',
   'manualRequest',
   'columnEmptyText',
-  'search',
   'pagination',
   'hideTools',
+  'hideSearchBar',
   'onReady',
   'loading',
   'tableEvents'
@@ -91,6 +92,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
       () => tableColumns.value?.filter((i) => state.showColumnsKeys.includes(i.prop as string))
     )
 
+    /** 判断工具栏和标题为空 */
     const emptyTableHeaderSlot = computed(() => props.hideTools && !slots[SLOTS_NAME.title])
 
     /** 重置事件 */
@@ -146,7 +148,6 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
         onFinish() {
           return requestResult()
         },
-        ...(props.search === false ? undefined : props.search),
         ...props.formProps
       }
     })
@@ -238,10 +239,12 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
     })
     return () => (
       <div class="pro-el-table">
-        {props.search === false ? null : (
+        {props.hideSearchBar === true ? null : (
           <header
             style={{
-              borderBottom: emptyTableHeaderSlot.value ? undefined : '1px solid var(--aw-border-color)'
+              borderBottom: emptyTableHeaderSlot.value
+                ? undefined
+                : '1px solid var(--aw-border-color)'
             }}
           >
             <ProElForm {...formProps.value} />
@@ -250,7 +253,11 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
         <main>
           <div
             class="flex justify-between items-center"
-            style={{ margin: emptyTableHeaderSlot.value ? '0 0 0 10px' : '10px 0 10px ' }}
+            style={{
+              margin: emptyTableHeaderSlot.value
+                ? '0 0 0 var(--aw-pro-el-table-header-margin)'
+                : 'var(--aw-pro-el-table-header-margin) 0 var(--aw-pro-el-table-header-margin) '
+            }}
           >
             <div>{slots[SLOTS_NAME.title] ? slots[SLOTS_NAME.title]!() : null}</div>
             {props.hideTools ? null : (
@@ -319,6 +326,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
                 ref={tableRef}
                 {...tableEvents.value}
               >
+                {props.isSelection === true ? <ElTableColumn type='selection' align='center' width={55} /> : null}
                 {currentTableColumns.value?.map((i) => (
                   <ElTableColumn
                     key={i.key || i.prop}
