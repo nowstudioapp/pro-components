@@ -1,12 +1,21 @@
 # 更新日志
 
 
+### V0.1.4
+
+2023-12-05
+
+- `ProElTable` 样式优化
+- 修复 `ProElForm` 的 `requestOption` 不生效问题
+
+---
+
 ### V0.1.3
 
 2023-11-30
 
 - `ProElTable` 分页优化
-- `Element Plus 样式按需导出`
+- `Element Plus` 样式按需导出
 
 ---
 

@@ -91,6 +91,8 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
       () => tableColumns.value?.filter((i) => state.showColumnsKeys.includes(i.prop as string))
     )
 
+    const emptyTableHeaderSlot = computed(() => props.hideTools && !slots[SLOTS_NAME.title])
+
     /** 重置事件 */
     const resetFormHandler = () => {
       formRef.value?.resetFields()
@@ -134,7 +136,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
           onReset() {
             resetFormHandler()
           },
-          searchConfig: {
+          submitConfig: {
             submitText: '查询'
           }
         },
@@ -170,9 +172,6 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
       }
       return emits
     })
-
-    // const initializeCall = () => {}
-    // initializeCall()
 
     watch([() => pageConfig.currentPage, () => pageConfig.pageSize], () => {
       requestResult()
@@ -240,14 +239,18 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
     return () => (
       <div class="pro-el-table">
         {props.search === false ? null : (
-          <header>
+          <header
+            style={{
+              borderBottom: emptyTableHeaderSlot.value ? undefined : '1px solid var(--aw-border-color)'
+            }}
+          >
             <ProElForm {...formProps.value} />
           </header>
         )}
         <main>
           <div
             class="flex justify-between items-center"
-            style={{ marginBottom: props.hideTools && !slots[SLOTS_NAME.title] ? 0 : '10px' }}
+            style={{ margin: emptyTableHeaderSlot.value ? '0 0 0 10px' : '10px 0 10px ' }}
           >
             <div>{slots[SLOTS_NAME.title] ? slots[SLOTS_NAME.title]!() : null}</div>
             {props.hideTools ? null : (
@@ -255,7 +258,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
                 {slots[SLOTS_NAME.tools] ? (
                   slots[SLOTS_NAME.tools]!()
                 ) : (
-                  <div class="flex justify-between items-center h-5">
+                  <div class="flex justify-start items-center">
                     <div
                       class="cursor-pointer flex justify-center items-center"
                       onClick={() => {
@@ -268,7 +271,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
                         </ElIcon>
                       </ElTooltip>
                     </div>
-                    <div style={{ marginLeft: '12px' }}>
+                    <div class="ml-2 flex justify-between items-center">
                       {tableColumns.value?.length ? (
                         <ElDropdown trigger="click">
                           {{
