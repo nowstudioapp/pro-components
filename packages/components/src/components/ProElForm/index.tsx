@@ -28,17 +28,24 @@ const compProps: (keyof ProElFormProps<Record<string, any>>)[] = [
   'submitter',
   'formProps'
 ]
-const compEmits: string[] = []
 
 export const ProElForm = defineComponent<ProElFormProps<any>>(
   <T extends Record<string, any>>(props: ProElFormProps<T>) => {
+    const submitter = computed(() => {
+      const { submitter } = props
+      return {
+        ...submitter,
+        submitConfig: { ...submitter?.searchConfig, ...submitter?.submitConfig }
+      }
+    })
+
     /** 24分栏 */
     const allSpanAtRowCount = 24
     const defaultFormData = reactive<T>({} as T)
     const formData = reactive<T>(defaultFormData)
     const loading = ref(false)
     const formRef = ref<null | FormInstance>(null)
-    const expand = ref(props.submitter?.searchConfig?.defaultCollapsed || false)
+    const expand = ref(submitter.value.submitConfig?.defaultCollapsed || false)
 
     const slots = useSlots()
 
@@ -118,13 +125,13 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
 
     /** 表单按钮VNode对象 */
     const formBtnsNode = computed(() => {
-      const { onSubmit, onReset, searchConfig, render } = props.submitter || {}
+      const { onSubmit, onReset, submitConfig, render } = submitter.value || {}
       const {
         submitText = '提交',
         resetText = '重置',
         submitProps,
         resetProps
-      } = searchConfig || {}
+      } = submitConfig || {}
 
       const submitBtnProps: TFooterBtnsProps['confirmProps'] = loading.value
         ? ({ ...submitProps, disabled: true, loading: true } as TFooterBtnsProps['confirmProps'])
@@ -223,6 +230,7 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
                             fieldProps={formFieldProps as any}
                             valueType={item.valueType}
                             options={item.options}
+                            requestOptions={item.requestOptions}
                             modelValue={formData[item.prop]}
                             onUpdate:modelValue={(v) => {
                               formData[item.prop] = v
@@ -246,7 +254,7 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
 
     /** 表单布局 */
     const formLayoutNode = computed(() => {
-      const { collapsedText = '收起', collapseText = '展开' } = props.submitter?.searchConfig || {}
+      const { collapsedText = '收起', collapseText = '展开' } = submitter.value.submitConfig || {}
       switch (formLayoutType.value) {
         case 'Form':
           return <div>{formNode.value}</div>
@@ -344,7 +352,6 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
   },
   {
     name: 'ProElForm',
-    props: [...compProps],
-    emits: [...compEmits]
+    props: [...compProps]
   }
 )

@@ -127,28 +127,34 @@ export interface ProElFormProps<T extends Record<string, any>> {
 
 export type LayoutType = 'Form' | 'DrawerForm' | 'DialogForm' | 'SearchForm'
 
+export interface SubmitConfig {
+  /** @name 重置按钮文本 */
+  resetText?: string
+  /** @name 提交按钮文本 */
+  submitText?: string
+  /** @name 展开文本 */
+  collapseText?: string
+  /** @name 收起文本 */
+  collapsedText?: string
+  /** @name 默认是否展开 */
+  defaultCollapsed?: boolean
+  /** @description 传递给提交按钮的Props */
+  submitProps?: TFooterBtnsProps['confirmProps']
+  /** @description 传递给重置按钮的Props */
+  resetProps?: TFooterBtnsProps['cancelProps']
+}
+
 export interface Submitter {
   /** @name 提交方法 */
   onSubmit?: () => void
   /** @name 重置方法 */
   onReset?: () => void
-  /** @name 搜索配置 */
-  searchConfig?: {
-    /** @name 重置按钮文本 */
-    resetText?: string
-    /** @name 提交按钮文本 */
-    submitText?: string
-    /** @name 展开文本 */
-    collapseText?: string
-    /** @name 收起文本 */
-    collapsedText?: string
-    /** @name 默认是否展开 */
-    defaultCollapsed?: boolean
-    /** @description 传递给提交按钮的Props */
-    submitProps?: TFooterBtnsProps['confirmProps']
-    /** @description 传递给重置按钮的Props */
-    resetProps?: TFooterBtnsProps['cancelProps']
-  }
+  /**
+   * @deprecated 搜索配置 已弃用 请使用 `submitConfig`
+   */
+  searchConfig?: SubmitConfig
+  /** @name 提交按钮配置 */
+  submitConfig?: SubmitConfig
   /** @name 自定义渲染方法 */
   render?: (() => VNode) | VNode
 }
