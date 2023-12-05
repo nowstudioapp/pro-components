@@ -25,8 +25,8 @@ const defaultOptions = [Keys.A, Keys.B, Keys.C].map((i) => ({
 
 const columns = computed<ProElFormColumn<any>[]>(() => [
   {
-    prop: "status",
-    label: "状态",
+    prop: "field",
+    label: "选择字段",
     valueType: "radioGroup",
     options: defaultOptions,
     initializeValue: Keys.A,
@@ -52,7 +52,7 @@ const columns = computed<ProElFormColumn<any>[]>(() => [
         ],
       }
     },
-    hideInForm: (formData) => formData["status"] !== Keys.A,
+    hideInForm: (formData) => formData["field"] !== Keys.A,
   },
   {
     prop: "option_b",
@@ -71,7 +71,7 @@ const columns = computed<ProElFormColumn<any>[]>(() => [
         ],
       }
     },
-    hideInForm: (formData) => formData["status"] !== Keys.B,
+    hideInForm: (formData) => formData["field"] !== Keys.B,
   },
   {
     prop: "option_c",
@@ -89,7 +89,7 @@ const columns = computed<ProElFormColumn<any>[]>(() => [
         ],
       }
     },
-    hideInForm: (formData) => formData["status"] !== Keys.C,
+    hideInForm: (formData) => formData["field"] !== Keys.C,
   },
 ])
 </script>

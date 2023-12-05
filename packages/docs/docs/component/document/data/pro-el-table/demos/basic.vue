@@ -4,7 +4,6 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { ElButton } from "element-plus"
 import { type RequestProp, ProElTable, type ProElTableColumn } from "@aiwen/ui"
 type TData = {
   name: string
@@ -35,20 +34,26 @@ const tableColumns: ProElTableColumn<TData>[] = [
   {
     prop: "age",
     label: "年龄",
+    colProps: {
+      span: 12,
+    },
     tableColumn: {
       sortable: true,
     },
-    hideInSearch: true,
   },
   {
     prop: "gender",
     label: "性别",
-    hideInSearch: true,
+    colProps: {
+      span: 12,
+    },
   },
   {
     prop: "address",
     label: "地址",
-    hideInSearch: true,
+    colProps: {
+      span: 12,
+    },
   },
 ]
 
@@ -66,10 +71,24 @@ const requestTableData: RequestProp<TData> = () => {
 </script>
 <template>
   <div>
-    <ProElTable :columns="tableColumns" :request="requestTableData" :hide-tools="true" :tableProps="{ border: true }">
-      <!-- <template #tableTitle>
-        <ElButton type="primary" @click="() => {}">新建</ElButton>
-      </template> -->
+    <ProElTable
+      :is-selection="true"
+      :columns="tableColumns"
+      :table-events="{
+        'selection-change':(e) => {
+          console.log(e)
+        }
+      }"
+      :request="requestTableData"
+      :tableProps="{ border: true }"
+      :form-props="{
+        submitter: {
+          searchConfig: {
+            defaultCollapsed: true,
+          },
+        },
+      }"
+    >
     </ProElTable>
   </div>
 </template>
