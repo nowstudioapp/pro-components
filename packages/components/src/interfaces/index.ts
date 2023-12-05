@@ -1,13 +1,13 @@
-import type { HTMLAttributes, VNode } from "vue"
+import type { HTMLAttributes, VNode } from 'vue'
 import type {
   ValueType,
   FieldOption,
   RequestOption,
-  FieldProps,
-} from "../components/ProElForm/types"
-import type { FormItemProps } from "element-plus"
+  FieldProps
+} from '../components/ProElForm/types'
+import type { FormItemProps } from 'element-plus'
 
-type ElFormItemProps = Omit<FormItemProps, "label" | "value"> & HTMLAttributes
+type ElFormItemProps = Omit<FormItemProps, 'label' | 'value'> & HTMLAttributes
 
 /**
  * @name 通用列配置
@@ -29,14 +29,12 @@ export interface ProElSchema<T extends Record<string, any>> {
   order?: number
   /** @name 渲染类型 */
   valueType?: ValueType
-  /** @name 选项 */
+  /** @name 选项数据，优先级高于`requestOptions` */
   options?: FieldOption[]
-  /** @description 初始值 */
-  initializeValue?: any
   /** @description 从服务器请求选项 */
   requestOptions?: RequestOption
-  // /** @description 自定义渲染只读元素 */
-  // render?: (record: T, index: number) => VNode
+  /** @description 初始值 */
+  initializeValue?: any
   /** @description 自定义渲染表单组件 返回一个VNode，会自动被ElFormItem包裹，并绑定v-model */
   renderField?: (formData: T, column: ProElSchema<T>) => VNode
   /** @description 传递给表单组件的Props */
