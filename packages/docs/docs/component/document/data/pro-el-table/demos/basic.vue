@@ -66,10 +66,10 @@ const requestTableData: RequestProp<TData> = () => {
 </script>
 <template>
   <div>
-    <ProElTable :columns="tableColumns" :request="requestTableData" :tableProps="{ border: false }">
-      <template #tableTitle>
+    <ProElTable :columns="tableColumns" :request="requestTableData" :hide-tools="true" :tableProps="{ border: true }">
+      <!-- <template #tableTitle>
         <ElButton type="primary" @click="() => {}">新建</ElButton>
-      </template>
+      </template> -->
     </ProElTable>
   </div>
 </template>

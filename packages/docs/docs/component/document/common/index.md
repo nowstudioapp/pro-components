@@ -12,9 +12,9 @@
 | tooltip         | 提示文本                                                                | `string`                                                                  |
 | order           | 排序值                                                                  | `number`                                                                  |
 | valueType       | 渲染类型                                                                | `ValueType`                                                               |
-| options         | 选项                                                                    | `FieldOption[]`                                                           |
-| initializeValue | 初始值                                                                  | `any`                                                                     |
+| options         | 选项数据，优先级高于 `requestOptions`                                                                    | `FieldOption[]`                                                           |
 | requestOptions  | 从服务器请求选项                                                        | `() => Promise<FieldOption[]>`                                            |
+| initializeValue | 初始值                                                                  | `any`                                                                     |
 | render          | 自定义渲染只读元素                                                      | `(record: T, index: number) => VNode`                                     |
 | renderField     | 自定义渲染表单组件 返回一个VNode，会自动被ElFormItem包裹，并绑定v-model | `(formData: T, column: ProElSchema<T>) => VNode`                          |
 | fieldProps      | 传递给表单组件的Props                                                   | `FieldProps \| ((formData: T) => FieldProps)`                             |
@@ -25,7 +25,7 @@
 | 类型          | 说明             |
 | ------------- | ---------------- |
 | input         | 输入框           |
-| inputNumber  | 数字输入框       |
+| inputNumber   | 数字输入框       |
 | password      | 密码框           |
 | select        | 下拉选择框       |
 | radioGroup    | 单选框           |

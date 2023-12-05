@@ -113,7 +113,7 @@ export default defineConfig({
         plugins: [
           autoprefixer(),
           tailwind({
-            content: ["../docs/**/*.{vue,css,tsx,jsx}"],
+            content: ["../docs/**/*.{vue,css,tsx,jsx}","../../components/src/**/*.{vue,css,tsx,jsx}"],
             corePlugins: {
               preflight: false,
             },
