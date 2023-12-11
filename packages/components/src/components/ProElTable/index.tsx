@@ -138,7 +138,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
           onReset() {
             resetFormHandler()
           },
-          submitConfig: {
+          searchConfig: {
             submitText: '查询'
           }
         },
@@ -326,7 +326,9 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
                 ref={tableRef}
                 {...tableEvents.value}
               >
-                {props.isSelection === true ? <ElTableColumn type='selection' align='center' width={55} /> : null}
+                {props.isSelection === true ? (
+                  <ElTableColumn type="selection" align="center" width={55} />
+                ) : null}
                 {currentTableColumns.value?.map((i) => (
                   <ElTableColumn
                     key={i.key || i.prop}
