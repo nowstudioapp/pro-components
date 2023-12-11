@@ -66,10 +66,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
     const state = reactive<State<T>>({
       loading: false,
       tableData: [],
-      showColumnsKeys:
-        props.columns
-          ?.filter((i) => !i.hideInTable && !i.defaultHideInColumn)
-          .map((i) => i.prop as string) || []
+      showColumnsKeys: []
     })
 
     /** 分页配置 */
@@ -184,6 +181,18 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
         if (loading !== undefined) {
           state.loading = loading
         }
+      }
+    )
+    watch(
+      () => props.columns,
+      (v) => {
+        state.showColumnsKeys =
+          v?.filter((i) => !i.hideInTable && !i.defaultHideInColumn).map((i) => i.prop as string) ||
+          []
+      },
+      {
+        deep: true,
+        immediate: true
       }
     )
 
