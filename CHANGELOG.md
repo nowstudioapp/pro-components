@@ -6,6 +6,8 @@
 
 - 新增 `ProElForm` 的 `setFieldValue` 方法
 - 新增 `ProElForm` 的 `setFieldsValue` 方法
+- 修复 `ProElTable` 查询表单文案异常问题
+- 修复 `ProElTable` 的 `column` 改变时表格更新异常问题
 
 ---
 
