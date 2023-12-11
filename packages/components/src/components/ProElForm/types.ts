@@ -87,6 +87,8 @@ export interface ProElFormRef {
   clearValidate: FormInstance['clearValidate']
   getFieldValue: <T>(prop: string) => T
   getFieldsValue: <T extends Record<string, any>>() => T
+  setFieldValue: <T = any>(prop: string, value: T) => void
+  setFieldsValue: <T>(data: Partial<T>) => void
 }
 
 /**
