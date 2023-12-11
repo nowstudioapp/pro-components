@@ -62,6 +62,8 @@ ProElForm 在 ElForm 的基础上进行了一些拓展，可根据配置快速�
 | clearValidate  | 清理某个字段的表单验证信息                                  | `FormInstance['clearValidate']`          |
 | getFieldValue  | 获取某个字段的值                                            | `<T>(prop: string) => T`                 |
 | getFieldsValue | 获取整个表单值                                              | `<T extends Record<string, any>>() => T` |
+| setFieldValue  | 设置某个字段的值                                            | `<T = any>(prop: string, value: T) => void`                 |
+| setFieldsValue | 设置整个表单值                                              | `<T>(data: Partial<T>) => void` |
 
 ## Slots
 

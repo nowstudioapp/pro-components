@@ -1,5 +1,13 @@
 # 更新日志
 
+### V0.1.5
+
+2023-12-11
+
+- 新增 `ProElForm` 的 `setFieldValue` 方法
+- 新增 `ProElForm` 的 `setFieldsValue` 方法
+
+---
 
 ### V0.1.4
 

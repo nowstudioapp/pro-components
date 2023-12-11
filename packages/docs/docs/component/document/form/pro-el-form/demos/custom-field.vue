@@ -5,9 +5,11 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ElInput } from "element-plus"
-import { type ProElFormColumn, ProElForm } from "@aiwen/ui"
-import { h } from "vue"
+import { ElInput, ElButton } from "element-plus"
+import { type ProElFormColumn, type ProElFormRef, ProElForm } from "@aiwen/ui"
+import { h, ref } from "vue"
+
+const formRef = ref<ProElFormRef | null>(null)
 
 const columns: ProElFormColumn<any>[] = [
   {
@@ -16,7 +18,7 @@ const columns: ProElFormColumn<any>[] = [
     fieldProps: {
       placeholder: "请输入",
     },
-    tooltip:'请输入'
+    tooltip: "请输入",
   },
   {
     prop: "custom",
@@ -40,7 +42,15 @@ const submit = (v: any) => {
 <template>
   <div>
     <div class="w-80">
-      <ProElForm :columns="columns" @finish="submit">
+      <ProElForm
+        :columns="columns"
+        @finish="submit"
+        @ready="
+          (ref) => {
+            formRef = ref
+          }
+        "
+      >
         <template #custom>
           <div>
             <h4>我是自定义内容</h4>
