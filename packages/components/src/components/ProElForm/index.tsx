@@ -298,9 +298,26 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
       return formData as any
     }
 
-    /** 获取prop获取表单数据 */
+    /** 根据prop获取表单数据 */
     const getFieldValue: ProElFormRef['getFieldValue'] = (prop) => {
       return formData[prop]
+    }
+
+    /** 设置所有表单数据 */
+    const setFieldsValue: ProElFormRef['setFieldsValue'] = <T extends Record<string, any>>(
+      newFormData: Partial<T>
+    ) => {
+      Object.keys(newFormData).forEach((k) => {
+        const nv = newFormData[k]
+        if (nv !== undefined) {
+          ;(formData[k] as any) = nv
+        }
+      })
+    }
+
+    /** 根据prop设置表单数据 */
+    const setFieldValue: ProElFormRef['setFieldValue'] = (prop, v) => {
+      ;(formData[prop] as any) = v
     }
 
     const initializeCall = () => {
@@ -319,7 +336,9 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
             scrollToField,
             clearValidate,
             getFieldsValue,
-            getFieldValue
+            getFieldValue,
+            setFieldsValue,
+            setFieldValue
           })
         }
       }
