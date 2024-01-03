@@ -196,11 +196,7 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
       }
     )
 
-    onMounted(() => {
-      if (!props.manualRequest) {
-        requestResult()
-      }
-
+    watch([tableRef, formRef], () => {
       if (tableRef.value && formRef.value) {
         const {
           clearSelection,
@@ -244,6 +240,12 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
             formRef.value
           )
         }
+      }
+    })
+
+    onMounted(() => {
+      if (!props.manualRequest) {
+        requestResult()
       }
     })
     return () => (

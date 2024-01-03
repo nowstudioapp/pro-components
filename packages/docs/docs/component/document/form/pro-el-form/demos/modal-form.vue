@@ -6,11 +6,7 @@ export default {
 <script setup lang="ts">
 import { computed, ref } from "vue"
 import { ElButton } from "element-plus"
-import {
-  type ProElFormColumn,
-  type ProElFormProps,
-  ProElForm,
-} from "@aiwen/ui"
+import { type ProElFormColumn, type ProElFormProps, ProElForm } from "@aiwen/ui"
 
 const show = ref(false)
 
@@ -35,8 +31,13 @@ const formProps = computed<ProElFormProps<any>>(() => ({
   layoutType: "DialogForm",
   modalProps: {
     modelValue: show.value,
-    title:"浮层表单",
-    onClosed:() => {show.value = false}
+    title: "浮层表单",
+    onClosed: () => {
+      show.value = false
+    },
+  },
+  onReady(formRef) {
+    console.log(formRef)
   },
 }))
 </script>
@@ -52,9 +53,7 @@ const formProps = computed<ProElFormProps<any>>(() => ({
       >打开表单</ElButton
     >
     <div>
-      <ProElForm
-        v-bind="formProps"
-      />
+      <ProElForm v-bind="formProps" v-if="show" />
     </div>
   </div>
 </template>

@@ -37,6 +37,12 @@
 | loading         | 表格Loading            | `boolean`                                                                                          | -      |
 | isSelection     | 开启多选               | `true`                                                                                             | -      |
 
+::: warning 注意
+
+`onReady` 属性会在组件挂载之后触发，如果组件被包裹在 `Modal` 和 `Drawer` 之类的容器中，请使用 `v-if` 指令控制组件渲染，否则会出现 `onReady `取不到值的情况
+
+:::
+
 ## ProElTableColumn\<T\>[]
 
 | Event               | 描述                     | 类型                                                              |

@@ -1,4 +1,4 @@
-import { ref, reactive, computed, defineComponent, useSlots, h, onMounted } from 'vue'
+import { ref, reactive, computed, defineComponent, useSlots, h, onMounted, watch } from 'vue'
 import type { ProElFormRef, LayoutType, ProElFormProps } from './types'
 import {
   ElRow,
@@ -325,7 +325,7 @@ export const ProElForm = defineComponent<ProElFormProps<any>>(
     }
     initializeCall()
 
-    onMounted(() => {
+    watch(formRef, () => {
       if (formRef.value) {
         const { validate, validateField, resetFields, scrollToField, clearValidate } = formRef.value
         if (props.onReady) {

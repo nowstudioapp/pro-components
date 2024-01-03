@@ -32,9 +32,12 @@ const formProps = computed<ProElFormProps<any>>(() => ({
   drawerProps: {
     modelValue: show.value,
     title: "抽屉表单",
-    onClosed:() => {
+    onClosed: () => {
       show.value = false
-    }
+    },
+  },
+  onReady(formRef) {
+    console.log(formRef)
   },
 }))
 </script>
@@ -57,6 +60,7 @@ const formProps = computed<ProElFormProps<any>>(() => ({
             show = false
           }
         "
+        v-if="show"
       />
     </div>
   </div>

@@ -88,6 +88,9 @@ const requestTableData: RequestProp<TData> = () => {
           },
         },
       }"
+      :on-ready="(t,f) => {
+        console.log(t,f)
+      }"
     >
     </ProElTable>
   </div>

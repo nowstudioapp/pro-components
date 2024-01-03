@@ -30,6 +30,13 @@ ProElForm 在 ElForm 的基础上进行了一些拓展，可根据配置快速�
 
 <preview path="./demos/drawer-form.vue" />
 
+
+::: warning 注意
+
+`onReady` 属性会在组件挂载之后触发，如果组件被包裹在 `Modal` 和 `Drawer` 之类的容器中，请使用 `v-if` 指令控制组件渲染，否则会出现 `onReady `取不到值的情况
+
+:::
+
 ## Props
 
 | 属性        | 描述                    | 类型                                                   | 默认值 |
