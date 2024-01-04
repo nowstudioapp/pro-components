@@ -198,6 +198,9 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
 
     watch([tableRef, formRef], () => {
       if (tableRef.value && formRef.value) {
+        if (!props.manualRequest) {
+          requestResult()
+        }
         const {
           clearSelection,
           getSelectionRows,
@@ -243,11 +246,6 @@ export const ProElTable = defineComponent<ProElTableProps<any>>(
       }
     })
 
-    onMounted(() => {
-      if (!props.manualRequest) {
-        requestResult()
-      }
-    })
     return () => (
       <div class="pro-el-table">
         {props.hideSearchBar === true ? null : (
