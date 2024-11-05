@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "@aiwen/ui"
+  name: "@aiwen/pro-components"
   text: "埃文前端UI组件库"
   tagline: 埃文科技
   actions:

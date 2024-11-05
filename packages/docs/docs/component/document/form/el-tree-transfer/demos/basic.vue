@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type TElTreeTransferData, ElTreeTransfer } from "@aiwen/ui"
+import { type TElTreeTransferData, ElTreeTransfer } from "@aiwen/pro-components"
 
 defineOptions({
   name: "demo-el-tree-transfer-basic",

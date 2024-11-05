@@ -5,7 +5,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { ElButton, ElDialog, ElDrawer } from "element-plus"
-import { FooterBtns } from "@aiwen/ui"
+import { FooterBtns } from "@aiwen/pro-components"
 import { reactive } from "vue"
 
 type TControl = "showModel" | "showDrawer"

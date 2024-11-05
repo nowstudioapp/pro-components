@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { type ProElFormColumn, ProElForm } from "@aiwen/ui"
+import { type ProElFormColumn, ProElForm } from "@aiwen/pro-components"
 
 const columns: ProElFormColumn<any>[] = new Array(4).fill(1).map((_, i) => ({
   prop: "field" + i,

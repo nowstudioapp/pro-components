@@ -5,19 +5,19 @@
 - NPM
 
 ```sh
-    npm install @aiwen/ui
+    npm install @aiwen/pro-components
 ```
 
 - YARN
 
 ```sh
-    yarn add @aiwen/ui
+    yarn add @aiwen/pro-components
 ```
 
 - PNPM (**推荐使用**)
 
 ```sh
-    pnpm add --save-dev @aiwen/ui
+    pnpm add --save-dev @aiwen/pro-components
 ```
 
 安装完成之后就可以在项目中使用了

@@ -6,7 +6,7 @@ export default {
 <script setup lang="ts">
 import { computed, ref } from "vue"
 import { ElButton } from "element-plus"
-import { type ProElFormColumn, type ProElFormProps, ProElForm } from "@aiwen/ui"
+import { type ProElFormColumn, type ProElFormProps, ProElForm } from "@aiwen/pro-components"
 
 const show = ref(false)
 

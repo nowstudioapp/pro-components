@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { type RequestProp, ProElTable, type ProElTableColumn } from "@aiwen/ui"
+import { type RequestProp, ProElTable, type ProElTableColumn } from "@aiwen/pro-components"
 import { ElButton } from "element-plus"
 
 type TData = {

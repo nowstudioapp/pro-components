@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { type RequestProp, type ProElTableColumn, ProElTable, ProElForm } from "@aiwen/ui"
+import { type RequestProp, type ProElTableColumn, ProElTable, ProElForm } from "@aiwen/pro-components"
 import { ElButton, ElSpace } from "element-plus"
 import { reactive, computed } from "vue"
 

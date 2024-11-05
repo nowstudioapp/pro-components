@@ -16,7 +16,7 @@
     "vitepress": "1.0.0-rc.10"
   },
   "dependencies": {
-    "@aiwen/ui": "link:E:/Project/aiva/@aiwen/ui/packages/components",
+    "@aiwen/pro-components": "link:D:/workspace/aiwen/aiwen-ui/packages/components",
     "@vitepress-demo-preview/component": "^2.3.2",
     "@vitepress-demo-preview/plugin": "^1.2.2",
     "element-plus": "^2.4.3",

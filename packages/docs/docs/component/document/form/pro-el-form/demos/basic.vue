@@ -4,7 +4,7 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { type ProElFormColumn, ProElForm } from "@aiwen/ui"
+import { type ProElFormColumn, ProElForm } from "@aiwen/pro-components"
 
 interface TParams {
   input: string
